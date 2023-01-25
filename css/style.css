@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;900&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+	background: linear-gradient(-45deg, #65648b, #565570, #868297, #704c8f);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.imagem {    
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.select-box, .play-board , .result-box{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 0.3s ease;
+}
+.select-box{
+    
+    background: linear-gradient(rgba(131, 129, 185, 0.527), rgba(142, 144, 153, 0.632), rgb(113, 123, 154));
+    padding: 20px 25px 25px;
+    border-radius: 5px;
+    max-width: 330px;
+    width: 100%;
+}
+.select-box.hide{
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%,-50%) scale(0.9);
+}
+
+.select-box header{
+    font-size: 23px;
+    font-weight: 650;
+    padding-bottom: 10px;    
+    border-bottom: 1px solid #ccc;    
+    text-align: center;
+    color: #253c47;
+}
+
+.select-box .title{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 20px 0;
+    color: #122345;    
+    font-weight: bold;
+}
+
+.select-box .option{
+    display: flex;
+    width: 100%;
+}
+
+.option button{
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 0;
+    border: none;
+    outline: none;
+    background: #48707f;
+    border-radius: 5px;
+    color: rgb(6, 3, 37);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.option button:hover,
+.result-box .btn button:hover{
+    transform: scale(0.9);
+}
+.option button playerX{
+    margin-right: 5px;       
+}
+
+.option button playerO{
+    margin-left: 5px;
+}
+.play-board{
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%,-50%) scale(0.9);
+   
+}
+.play-board.show{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%,-50%) scale(1);
+   
+}
+.play-board .details{
+    background: #fff;
+    padding: 7px;
+    border-radius: 5px;
+}
+.play-board .details .players{
+    display: flex;
+    width: 100%;
+    position:relative;
+    justify-content: space-around;
+}
+.play-board .details span{
+   color: #56baed;
+    width: 100%;
+    border-radius: 5px;
+    padding: 7px 0;
+    font-size: 19px;
+    font-weight: 500;
+    cursor: default;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+.details span:first-child{
+    color: #fff;
+}
+.details .slider{
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    background: #0e1931;
+    border-radius: 5px;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+.players.active span:first-child{
+    color: #56baed;
+}
+
+.players.active span:nth-child(2){
+    color: #fff;
+}
+.players.active .slider{
+    left: 50%;
+}
+
+.play-board .play-area{
+    margin-top: 20px;
+}
+
+.play-board section{
+    display: flex;
+}
+.play-board section span{
+    display: block;
+    margin: 2px;
+    height: 80px;
+    width: 80px;
+    background: rgb(28, 35, 51);
+    border-radius: 5px;
+    font-size: 40px;
+    text-align: center;
+    line-height: 80px;
+    color: #ffffffa5;
+}
+
+.result-box{
+    background: linear-gradient(rgba(131, 129, 185, 0.527), rgba(142, 144, 153, 0.632), rgb(113, 123, 154));
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 350px;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50% , -50%) scale(0.9);
+}
+.result-box.show{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.result-box .won-text{
+    font-size: 25px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    color: #4f5da4a2;
+}
+
+.result-box .won-text p {
+    font-weight: 600;
+    margin: 0 3px;
+}
+
+.result-box .btn {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.result-box .btn button {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 20px;
+    border: none;
+    outline: none;
+    background: #36438d56;
+    border-radius: 5px;
+    color: rgba(51, 38, 121, 0.428);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option button.playerX {
+    margin-right: 10px;
+    }
